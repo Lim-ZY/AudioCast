@@ -1,27 +1,27 @@
-## Unallocated Frequency Scanner
+# Unallocated Frequency Scanner
 
 This python utility identifies unallocated frequencies (whitespace) in the FM broadcast spectrum based on the user's location (country), using publicly available data to build a database of allocated channels. These unallocated frequencies can then be used for custom transmitters to avoid congestion and interference with existing radio stations.
 
 We encourage and welcome open source contributions to enhance the allocated FM frequencies [database](./fm_station_database.py).
 
-### Sample Input - Output
+## Run Instructions
 
-**Pre-requisites**:
+### Pre-requisites
 ```
 Suitable version of python / python3
 ```
 
-**Execution**:
+### Execution
 ```
 python fm_whitespace_scanner.py
 ```
 
-**Input**:
+### Input
 ```
 Enter the country to scan for FM whitespace (e.g., USA, India, UK): USA
 ```
 
-**Output**:
+### Output
 ```
 FM Band for USA: 88.0 MHz to 108.0 MHz
 Notes: Unlicensed transmissions are governed by FCC Part 15 regulations.

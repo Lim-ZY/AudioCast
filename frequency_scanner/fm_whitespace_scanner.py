@@ -1,3 +1,12 @@
+################################################################################################
+# Authors : Dhairya Shah, C. Rajashekar Reddy
+# Emails  : dhairya@u.nus.edu, rajashekar.c@u.nus.edu
+################################################################################################
+# This script identifies unoccupied / unallocated frequencies (whitespace) in the FM broadcast spectrum for a given country. 
+# It leverages a database of publicly available FM station allocations (fm_station_database.py) 
+# to help users determine safe and interference-free frequencies for unlicensed or experimental use.
+################################################################################################
+
 from fm_station_database import fm_station_database
 
 # Define FM band ranges and unlicensed rules for various countries
