@@ -8,6 +8,7 @@ Wireless connectivity challenges hinder the deployment of embedded systems. We i
 
 AudioCast rethinks the architecture of radio transmitters using a tunnel diode oscillator to generate carrier signals and self-modulate them with baseband signals. This results in frequency-modulated transmissions at an overall power consumption below 200 μW. Unlike related systems based on the backscatter mechanism, AudioCast does not require an externally generated carrier or rely on ambient signals. We argue that AudioCast represents an example of a new class of transmitters which we conceptualize as Beyond-Backscatter transmitters. Through experiments, we demonstrate that AudioCast achieves a transmission range of up to 130 m in line-of-sight and tens of meters in non-line-of-sight conditions respectively. These transmissions are decodable by ubiquitous commodity FM receivers in cars, homes, and phones. We evaluate AudioCast through theoretical analysis, benchtop experiments, and urban/indoor field deployments. Additionally, we prototype and demonstrate novel applications, including low-power voice transmissions and hand gesture communication, enabled by AudioCast’s range and power efficiency.
 
+
 ## Repository Organization
 
 ```
@@ -18,6 +19,7 @@ AudioCast rethinks the architecture of radio transmitters using a tunnel diode o
 ├── assets                    # Images, videos, posters, etc.
 └── transmitter_firmware      # Firmware code for baseband generator, FM tuner, etc.
 ```
+
 
 ## AudioCast System Preview
 
@@ -39,54 +41,78 @@ Alternatively: Watch it [here](https://www.youtube.com/watch?v=k4Gf5YFvplg)
 
 > The above videos can also be previewed [here](./assets/videos/).
 
+
 ## Publications
 
-1. [**ACM IMWUT (UbiComp) '25**](https://dl.acm.org/journal/imwut) - *AudioCast: Enabling Ubiquitous Connectivity for Embedded Systems through Audio-Broadcasting Low-power Tags*
-   > **Full paper** to appear in IMWUT - June 2025: **Vol. 9, No. 2, Article 27** and to be presented at ACM UbiComp '25 in Espoo, Finland
+1. [**ACM IMWUT (UbiComp) '25**](https://doi.org/10.1145/3729471) - *AudioCast: Enabling Ubiquitous Connectivity for Embedded Systems through Audio-Broadcasting Low-power Tags*
+   > **Full paper** to appear in IMWUT - June '25: **Vol. 9, No. 2, Article 27** and to be presented at ACM UbiComp '25 in Espoo, Finland.
     <details>
     <summary>Click to expand citation</summary>
 
     ```
     @article{audiocast_imwut25,
-    author = {Reddy, C. Rajashekar; Shah, Dhairya Jigar; Ang, Nobel and Varshney, Ambuj (to appear)},
-    title = {AudioCast: Enabling Ubiquitous Connectivity for Embedded Systems through Audio-Broadcasting Low-power Tags},
-    journal = {IMWUT},
-    year = {2025},
-    issue_date = {June 2025},
-    publisher = {Association for Computing Machinery},
-    address = {New York, NY, USA},
-    volume = {9},
-    number = {2},
-    url = {https://doi.org/10.1145/3729471},
-    doi = {10.1145/3729471},
-    articleno = {27},
-    numpages = {32},
+        author = {Reddy, C. Rajashekar; Shah, Dhairya Jigar; Ang, Nobel and Varshney, Ambuj (to appear)},
+        title = {AudioCast: Enabling Ubiquitous Connectivity for Embedded Systems through Audio-Broadcasting Low-power Tags},
+        journal = {IMWUT},
+        year = {2025},
+        issue_date = {June 2025},
+        publisher = {Association for Computing Machinery},
+        address = {New York, NY, USA},
+        volume = {9},
+        number = {2},
+        url = {https://doi.org/10.1145/3729471},
+        doi = {10.1145/3729471},
+        articleno = {27},
+        numpages = {32},
     }
     ```
 
     </details>
 
- 2. [**ACM MobiSys '25**](https://dl.acm.org/journal/imwut) - *Enabling Ubiquitous Connectivity for Embedded Systems through Audio-Broadcasting Low-power Tags*
-    > **Demo** to appear at MobiSys '25 in Anaheim, California, US
+ 2. [**ACM MobiSys '25**](https://www.sigmobile.org/mobisys/2025/) - *Enabling Ubiquitous Connectivity for Embedded Systems through Audio-Broadcasting Low-power Tags*
+    > **Demo** to appear at MobiSys '25 in Anaheim, California, US.
     <details>
     <summary>Click to expand citation</summary>
 
     ```
     @inproceedings{audiocast_mobisys25,
-    author = {Reddy, C. Rajashekar and Shah, Dhairya Jigar and Varshney, Ambuj (to appear)},
-    title = {Enabling Ubiquitous Connectivity for Embedded Systems through Audio-Broadcasting Low-power Tags},
-    year = {2025},
-    publisher = {Association for Computing Machinery},
-    address = {New York, NY, USA},
-    numpages = {2},
-    location = {Anaheim, California, US},
-    series = {MOBISYS '25}
+        author = {Reddy, C. Rajashekar and Shah, Dhairya Jigar and Varshney, Ambuj (to appear)},
+        title = {Enabling Ubiquitous Connectivity for Embedded Systems through Audio-Broadcasting Low-power Tags},
+        year = {2025},
+        publisher = {Association for Computing Machinery},
+        address = {New York, NY, USA},
+        numpages = {2},
+        location = {Anaheim, California, US},
+        series = {MOBISYS '25}
+    }
+    ```
+    </details>
+
+ 3. [**ACM ENSsys '23**](https://dl.acm.org/doi/10.1145/3628353.3628546) - *Beyond Broadcasting: Revisiting FM Frequency-band for Providing Connectivity to Next Billion Devices*
+    > **Paper** presented at EnSsys '23 Workshop which has held in conjunction with ACM SenSys '23 in Istanbul, Turkey. AudioCast builds on this early work.
+    <details>
+    <summary>Click to expand citation</summary>
+    
+    ```
+    @inproceedings{tunnelradio_enssys23,
+        author = {Reddy, C. Rajashekar and Gulati, Manoj and Varshney, Ambuj},
+        title = {Beyond Broadcasting: Revisiting FM Frequency-band for Providing Connectivity to Next Billion Devices},
+        year = {2023},
+        isbn = {9798400704383},
+        publisher = {Association for Computing Machinery},
+        address = {New York, NY, USA},
+        url = {https://doi.org/10.1145/3628353.3628546},
+        doi = {10.1145/3628353.3628546},
+        booktitle = {Proceedings of the 11th International Workshop on Energy Harvesting \& Energy-Neutral Sensing Systems},
+        pages = {30–36},
+        numpages = {7},
+        keywords = {FM communication, Internet of Things (IoT), Low-Power Communication, Tunnel Diodes},
+        location = {Istanbul, Turkiye},
+        series = {ENSsys '23}
     }
     ```
 
-    </details>
-
-## Contributors
+## Contributors and Team
 
 AudioCast is developed and maintained by the following researchers from the [WEISER group](https://weiserlab.github.io/ambuj/) from the School of Computing, National University of Singapore (NUS). 
 
@@ -98,7 +124,9 @@ AudioCast is developed and maintained by the following researchers from the [WEI
 
 
 ## Acknowledgements
-We acknowledge Nobel Ang, Yuvraj Singh Bhadauria and Manoj Gulati for their assistance and support during the early stages of this work.
+
+We acknowledge Nobel Ang, [Yuvraj Singh Bhadauria](https://github.com/UvrajSB) and [Manoj Gulati](https://github.com/manojgulati) for their assistance and support during the early stages of this work.
+
 
 ## Funding
 
