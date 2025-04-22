@@ -66,7 +66,7 @@ Alternatively: Watch it [here](https://www.youtube.com/watch?v=k4Gf5YFvplg)
 
     </details>
 
-    2. [**ACM MobiSys '25**](https://dl.acm.org/journal/imwut) - *Enabling Ubiquitous Connectivity for Embedded Systems through Audio-Broadcasting Low-power Tags*
+ 2. [**ACM MobiSys '25**](https://dl.acm.org/journal/imwut) - *Enabling Ubiquitous Connectivity for Embedded Systems through Audio-Broadcasting Low-power Tags*
     > **Demo** to appear at MobiSys '25 in Anaheim, California, US
     <details>
     <summary>Click to expand citation</summary>
