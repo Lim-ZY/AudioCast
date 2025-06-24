@@ -6,6 +6,7 @@
     #define sPerFrame 128
     #define sRate     6000
     #define TX_PROT   GGWAVE_PROTOCOL_MT_FASTEST
+    #define PL        8
 
     // Global GGwave instance
     GGWave ggwave;
@@ -24,10 +25,10 @@
         }
     }
 
-    void delay(unsigned int len) {
-        while (len) {
-            __delay_cycles(1000);
-            len--;
+    void delay_ms(unsigned int ms) {
+        while (ms) {
+            __delay_cycles(5000); //8000
+            ms--;
         }
     }
 
@@ -94,7 +95,7 @@
 
         // Adjust the "ggwave" parameters to your needs.
         // Make sure that the "payloadLength" parameter matches the one used on the transmitting side.
-        p.payloadLength   = 8; //16
+        p.payloadLength   = PL;
         p.sampleRateInp   = sRate;
         p.sampleRateOut   = sRate;
         p.sampleRate      = sRate;
@@ -156,7 +157,7 @@
             sprintf(buf, "Playing tone: %f\n", freq_hz);
             ser_print(buf);
             generate_tone(freq_hz);
-            delay(duration_ms);
+            delay_ms(duration_ms);
         }
         Timer_A_stop(TIMER_A1_BASE);
     }
@@ -168,12 +169,10 @@
         init_ggwave();
 
         while (1) {
-            send_text(ggwave, P("Hellooo"), TX_PROT);
-            __delay_cycles(1000000);
+            send_text(ggwave, P("HelloXD"), TX_PROT);
+            __delay_cycles(16000000);   // delay 2s
         }
-        
-        // generate_tone(440);
 
-        // changed heap size from 160 to 320
+        // changed heap size from 160 to 350
     }
 

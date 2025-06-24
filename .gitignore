@@ -1,6 +1,10 @@
 #####################################
 # Firmware / Software ###############
 
+# misc files
+*.wav
+*.png
+
 # platform io
 .pioenvs
 .piolibdeps
