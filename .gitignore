@@ -368,3 +368,12 @@ eagle.epf
 # file locks introduced since 7.x
 *.lck
 #####################################
+
+# ignore these
+eusci_b_i2c_ex1_masterRxMultiple/
+eusci_b_i2c_ex3_masterTxMultiple/
+eusci_b_i2c_ex3_slaveRxMultiple/
+backupSI4713/
+MSP430/driverlib
+MSP430/debug
+

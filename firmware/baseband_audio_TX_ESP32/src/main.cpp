@@ -27,11 +27,21 @@ be equal to "payloadLength" used in the sketch.
 #include <cstring>
 #include <string>
 
+#include "DFRobot_VEML7700.h"
+#include <SPI.h>
+#include <Adafruit_Si4713.h>
+
+#define RESETPIN 4
+
+// #define FMSTATION 10780      // 10230 == 102.30 MHz
+#define FMSTATION 10770
+
+Adafruit_Si4713 radio = Adafruit_Si4713(RESETPIN);
 // Uncomment the below if you want to transmit LUX data from DFRobot VEML7700 sensor. Additionally you may connect any other sensor and modify
 // #define LUX_sensor_data 
 
 String packet_data = "ABCDEF123456" ; //"ABCD"; //each character is 1 byte -> max can send is 15 bytes 16th byte is ending byte
-char txt[64]; 
+
 #ifdef LUX_sensor_data
     #include "DFRobot_VEML7700.h"
     DFRobot_VEML7700 als;  
@@ -42,6 +52,7 @@ char txt[64];
 /*
  * Instantiate an object to drive the sensor
  */
+DFRobot_VEML7700 als;
 // Pin configuration
 const int kPinLed0    = 32;
 const int kPinSpeaker = 33;
@@ -52,6 +63,7 @@ const int sampleRate      = 6000;
 // Global GGwave instance
 GGWave ggwave;
 
+char txt[64];
 #define P(str) (strcpy_P(txt, PSTR(str)), txt)
 
 // Helper function to output the generated GGWave waveform via a buzzer
@@ -76,17 +88,74 @@ void send_text(GGWave & ggwave, uint8_t pin, const char * text, GGWave::TxProtoc
 }
 
 void setup() {
-    Serial.begin(115200);
+    Wire.begin(); // debug
+
+    Serial.begin(115200);  // 57600 in other file
     while (!Serial);
+    Serial.println("\nI2C Scanner"); //debug
+
+    // debug loop
+
+    for (byte addr = 1; addr < 127; addr++) {
+        Wire.beginTransmission(addr);
+        if (Wire.endTransmission() == 0) {
+            Serial.print("I2C device found at 0x");
+            Serial.println(addr, HEX);
+        }
+        delay(10);
+    }
 
     // pinMode(kPinLed0,    OUTPUT);
     pinMode(kPinSpeaker, OUTPUT);
+    als.begin();   // Init
+    if (! radio.begin()) {  // begin with address 0x63 (CS high default)
+        Serial.println("Couldn't find radio?");
+        while (1);
+    }
 
     #ifdef LUX_sensor_data
         als.begin();   // Init
     #else
         // memset(txt, 0xff, sizeof(txt));
-    #endif
+    #endif    
+
+    Serial.print("\nSet TX power");
+    radio.setTXpower(115);  // dBuV, 88-115 max
+
+
+    // Uncomment to scan power of entire range from 87.5 to 108.0 MHz
+  
+    // for (uint16_t f  = 8750; f<10800; f+=10) {
+    //     radio.readTuneMeasure(f);
+    //     Serial.print("Measuring "); Serial.print(f); Serial.print("...");
+    //     radio.readTuneStatus();
+    //     Serial.println(radio.currNoiseLevel);
+    // }
+   
+
+    Serial.print("\nTuning into "); 
+    Serial.print(FMSTATION/100); 
+    Serial.print('.'); 
+    Serial.println(FMSTATION % 100);
+    radio.tuneFM(FMSTATION); // 102.3 mhz    
+
+    // This will tell you the status in case you want to read it from the chip
+    radio.readTuneStatus();
+    Serial.print("\tCurr freq: "); 
+    Serial.println(radio.currFreq);
+    Serial.print("\tCurr freqdBuV:"); 
+    Serial.println(radio.currdBuV);
+    Serial.print("\tCurr ANTcap:"); 
+    Serial.println(radio.currAntCap);
+
+    // begin the RDS/RDBS transmission
+    radio.beginRDS();
+    radio.setRDSstation("AdaRadio");
+    radio.setRDSbuffer( "Adafruit g0th Radio!");
+
+    Serial.println("RDS on!");  
+
+    radio.setGPIOctrl(_BV(1) | _BV(2));  // set GP1 and GP2 to output
 
     // Initialize "ggwave"
     {
