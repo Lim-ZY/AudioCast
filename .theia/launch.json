@@ -1,0 +1,45 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Testing_MSP430",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "Testing_MSP430",
+                "resourceId": "/Testing_MSP430"
+            },
+            "connections": [
+                {
+                    "name": "TI MSP430 USB1",
+                    "cores": [
+                        {
+                            "name": "MSP430",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "eusci_b_i2c_ex3_masterTxMultiple",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "eusci_b_i2c_ex3_masterTxMultiple",
+                "resourceId": "/eusci_b_i2c_ex3_masterTxMultiple"
+            }
+        },
+        {
+            "name": "MSP430",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "MSP430",
+                "resourceId": "/MSP430"
+            }
+        }
+    ]
+}
