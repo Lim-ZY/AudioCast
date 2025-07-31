@@ -793,8 +793,8 @@ uint32_t GGWave::encode() {
     const int sendDataLength = m_tx.dataLength + m_encodedDataOffset;
     const int totalBytes = sendDataLength + nECCBytesPerTx;
     const int totalDataFrames = m_tx.protocol.extra*((totalBytes + m_tx.protocol.bytesPerTx - 1)/m_tx.protocol.bytesPerTx)*m_tx.protocol.framesPerTx;
-    sprintf(buf, "Total data frames: %d\n", totalDataFrames);
-    ser_print(buf);
+    // sprintf(buf, "Total data frames: %d\n", totalDataFrames);
+    // ser_print(buf);
     if (m_isFixedPayloadLength == false) {
         RS::ReedSolomon rsLength(1, m_encodedDataOffset - 1, m_workRSLength.data());
         rsLength.Encode(m_tx.data.data(), m_dataEncoded.data());
@@ -862,11 +862,11 @@ uint32_t GGWave::encode() {
             }
 
             frameId += m_tx.protocol.framesPerTx;
-            sprintf(buf, "Frame %d processed, m_tx.hasData: %s\n", frameId, m_tx.hasData ? "true" : "false");
-            ser_print(buf);
+            // sprintf(buf, "Frame %d processed, m_tx.hasData: %s\n", frameId, m_tx.hasData ? "true" : "false");
+            // ser_print(buf);
         }
-        sprintf(buf, "txOnlyTones: %s\n", m_txOnlyTones ? "true" : "false");
-        ser_print(buf);
+        // sprintf(buf, "txOnlyTones: %s\n", m_txOnlyTones ? "true" : "false");
+        // ser_print(buf);
         if (m_txOnlyTones) {
             m_tx.hasData = false;
             return true;
